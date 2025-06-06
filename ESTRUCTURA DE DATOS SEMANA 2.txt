@@ -1,0 +1,94 @@
+using System;
+
+namespace FigurasGeometricas
+{
+    // Clase para el Círculo
+    public class Circulo
+    {
+        private double radio;
+
+        public Circulo(double radio)
+        {
+            this.radio = radio;
+        }
+
+        public double ObtenerRadio()
+        {
+            return radio;
+        }
+
+        public void EstablecerRadio(double nuevoRadio)
+        {
+            if (nuevoRadio > 0)
+                radio = nuevoRadio;
+        }
+
+        public double CalcularArea()
+        {
+            return Math.PI * radio * radio;
+        }
+
+        public double CalcularPerimetro()
+        {
+            return 2 * Math.PI * radio;
+        }
+    }
+
+    // Clase para el Rectángulo
+    public class Rectangulo
+    {
+        private double largo;
+        private double ancho;
+
+        public Rectangulo(double largo, double ancho)
+        {
+            this.largo = largo;
+            this.ancho = ancho;
+        }
+
+        public double ObtenerLargo()
+        {
+            return largo;
+        }
+
+        public double ObtenerAncho()
+        {
+            return ancho;
+        }
+
+        public void EstablecerLargo(double nuevoLargo)
+        {
+            if (nuevoLargo > 0)
+                largo = nuevoLargo;
+        }
+
+        public void EstablecerAncho(double nuevoAncho)
+        {
+            if (nuevoAncho > 0)
+                ancho = nuevoAncho;
+        }
+
+        public double CalcularArea()
+        {
+            return largo * ancho;
+        }
+
+        public double CalcularPerimetro()
+        {
+            return 2 * (largo + ancho);
+        }
+    }
+
+    // Ejemplo de uso
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Circulo c = new Circulo(5);
+            Console.WriteLine($"Círculo - Área: {c.CalcularArea()}, Perímetro: {c.CalcularPerimetro()}");
+
+            Rectangulo r = new Rectangulo(4, 6);
+            Console.WriteLine($"Rectángulo - Área: {r.CalcularArea()}, Perímetro: {r.CalcularPerimetro()}");
+        }
+    }
+}
