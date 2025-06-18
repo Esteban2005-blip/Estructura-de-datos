@@ -1,0 +1,90 @@
+# Crear archivo Python con el código de la agenda telefónica en POO
+python_code = """
+class Contacto:
+    def __init__(self, nombre, telefono, correo):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.correo = correo
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Teléfono: {self.telefono}, Correo: {self.correo}"
+
+
+class AgendaTelefonica:
+    def __init__(self):
+        self.contactos = []
+
+    def agregar_contacto(self, nombre, telefono, correo):
+        contacto = Contacto(nombre, telefono, correo)
+        self.contactos.append(contacto)
+        print("✅ Contacto agregado correctamente.")
+
+    def mostrar_contactos(self):
+        if not self.contactos:
+            print("📭 La agenda está vacía.")
+        else:
+            print("📒 Lista de contactos:")
+            for i, contacto in enumerate(self.contactos, 1):
+                print(f"{i}. {contacto}")
+
+    def buscar_contacto(self, nombre):
+        encontrados = [c for c in self.contactos if nombre.lower() in c.nombre.lower()]
+        if encontrados:
+            print("🔍 Contactos encontrados:")
+            for c in encontrados:
+                print(c)
+        else:
+            print("❌ No se encontró el contacto.")
+
+    def eliminar_contacto(self, nombre):
+        for contacto in self.contactos:
+            if contacto.nombre.lower() == nombre.lower():
+                self.contactos.remove(contacto)
+                print("🗑️ Contacto eliminado.")
+                return
+        print("❌ No se encontró el contacto a eliminar.")
+
+
+# Menú principal
+def menu():
+    agenda = AgendaTelefonica()
+    while True:
+        print("\\n=== AGENDA TELEFÓNICA ===")
+        print("1. Agregar contacto")
+        print("2. Mostrar contactos")
+        print("3. Buscar contacto")
+        print("4. Eliminar contacto")
+        print("5. Salir")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre: ")
+            telefono = input("Teléfono: ")
+            correo = input("Correo electrónico: ")
+            agenda.agregar_contacto(nombre, telefono, correo)
+        elif opcion == "2":
+            agenda.mostrar_contactos()
+        elif opcion == "3":
+            nombre = input("Ingrese el nombre a buscar: ")
+            agenda.buscar_contacto(nombre)
+        elif opcion == "4":
+            nombre = input("Ingrese el nombre del contacto a eliminar: ")
+            agenda.eliminar_contacto(nombre)
+        elif opcion == "5":
+            print("📤 Saliendo de la agenda...")
+            break
+        else:
+            print("⚠️ Opción no válida. Intente de nuevo.")
+
+
+if __name__ == "__main__":
+    menu()
+"""
+
+file_path = "/mnt/data/agenda_telefonica.py"
+with open(file_path, "w") as f:
+    f.write(python_code)
+
+file_path
+
